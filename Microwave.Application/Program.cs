@@ -9,7 +9,7 @@ using MicrowaveOvenClasses.Controllers;
 namespace Microwave.Application
 {
 
-    //Jenkins launch test
+    //Jenkins launch testing
 
     class Program
     {
