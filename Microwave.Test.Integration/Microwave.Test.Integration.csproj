@@ -38,5 +38,11 @@
   <ItemGroup>
     <Compile Include="IntegrationTest1_DoorUI.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MicrowaveOvenClasses\MicrowaveOvenClasses.csproj">
+      <Project>{2B04DA6B-AFE9-4548-AA05-84D806BA0FA4}</Project>
+      <Name>MicrowaveOvenClasses</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
