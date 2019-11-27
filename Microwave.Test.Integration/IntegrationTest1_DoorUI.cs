@@ -41,19 +41,42 @@ namespace Microwave.Test.Integration
             _door = new Door();
 
             //uut
-            _uut = new UserInterface(_powerButton, _timeButton, _startCancelButton, _door, _display, _light, _cookController);
-
-
+            _uut = new UserInterface
+            (
+                _powerButton,
+                _timeButton,
+                _startCancelButton,
+                _door,
+                _display,
+                _light,
+                _cookController
+            );
         }
 
         [Test]
         public void OpenDoor()
         {
-
+            _door.Open();
+            _light.Received(1).TurnOn();
         }
 
+        [Test]
+        public void OpenAndCloseDoor()
+        {
+            _door.Open();
+            _light.Received(1).TurnOn();
+            _door.Close();
+            _light.Received(1).TurnOff();
+        }
 
-
+        [Test]
+        public void OpenDoorWhenCooking()
+        {
+            
+            _door.Open();
+            _light.Received(1).TurnOn();
+            
+        }
 
     }
 
