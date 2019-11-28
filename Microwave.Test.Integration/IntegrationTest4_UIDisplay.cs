@@ -63,6 +63,8 @@ namespace Microwave.Test.Integration
 
         #endregion SetUp
 
+        #region Tests
+
         [Test] // Test 1: Ved et enkelt tryk på PowerButton viser displayet den rigtige værdi i W. UC 6.
         public void DisplayShowsCorrectPower_OutputTest()
         {
@@ -129,6 +131,8 @@ namespace Microwave.Test.Integration
 
             _output.Received(1).OutputLine($"Display cleared");
         }
+
+        #endregion Tests
 
     }
 }
