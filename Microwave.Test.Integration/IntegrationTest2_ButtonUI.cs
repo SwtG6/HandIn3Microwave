@@ -67,13 +67,13 @@ namespace Microwave.Test.Integration
             _light.Received(1).TurnOn();
         }
 
-        [Test] // Test 2: Der trykkes på StartCancelButton under Power-setup og displayet blankes. UC Extension 1.
-        public void StartCancelButton_DisplayTest()
-        {
-            _startCancelButton.Press();
+        //[Test] // Test 2: Der trykkes på StartCancelButton under Power-setup og displayet blankes. UC Extension 1.
+        //public void StartCancelButton_DisplayTest()
+        //{
+        //    _startCancelButton.Press();
 
-            _display.Received(1).Clear();
-        }
+        //    _display.Received(1).Clear();
+        //}
 
         [Test] // Test 3: Der trykkes op StartCancelButton under cooking og PT slukkes samt displayet blankes. UC Extension 3.
         public void StartCancelButton_PTAndDisplayTest()
@@ -99,13 +99,6 @@ namespace Microwave.Test.Integration
             _display.Received(1).ShowTime(Arg.Is(01), Arg.Is(00));
             //_display.Received(1).ShowTime(Arg.Any<int>(), Arg.Any<int>()); - Virker måske bedre, da vi ikke kan garantere at første tryk giver 01:00 (Tjek unit tests).
         }
-
-        //[Test] // Test 6:
-        //public void TimeButton()
-        //{
-
-
-        //}
 
         #endregion Små tests af enkelte Use Case steps
 
@@ -144,7 +137,7 @@ namespace Microwave.Test.Integration
         }
 
 
-        [Test] // Test 4: Der trykkes flere gange på TimeButton og Display viser den korrekte værdie for den valgte tid. UC 7.
+        [Test] // Test 4: Der trykkes flere gange på TimeButton og Display viser den korrekte værdi for den valgte tid. UC 7.
         public void MultipleTimeButton_DisplayTest(int NumberOfPresses, int TimerSetting)
         {
             NumberOfPresses = 5;
