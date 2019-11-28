@@ -83,12 +83,29 @@ namespace Microwave.Test.Integration
             _cookController.Received(1).Stop();
         }
 
-        [Test] // Test 4: Der trykkes på PowerButton én eller flere gange, og det valgte power level ændres samt opdateres på displayet. UC 6.
-        public void PowerButton_SettingDisplayTest()
+        [Test] // Test 4: Der trykkes på PowerButton én gang, og det valgte power level ændres samt opdateres på displayet. UC 6.
+        public void PowerButton_SettingAndDisplayTest()
         {
             _powerButton.Press();
 
+            _display.Received(1).ShowPower(Arg.Any<int>());
         }
+
+        [Test] // Test 5: Der trykkes på TimerButton én gang, og den valgte tid vises på displayet. UC 7
+        public void TimeButton_DisplayTest()
+        {
+            _timeButton.Press();
+
+            _display.Received(1).ShowTime(Arg.Is(01), Arg.Is(00));
+            //_display.Received(1).ShowTime(Arg.Any<int>(), Arg.Any<int>()); - Virker måske bedre, da vi ikke kan garantere at første tryk giver 01:00 (Tjek unit tests).
+        }
+
+        //[Test] // Test 6:
+        //public void TimeButton()
+        //{
+
+
+        //}
 
         #endregion Små tests af enkelte Use Case steps
 
