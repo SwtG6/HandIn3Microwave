@@ -43,6 +43,8 @@
     <Compile Include="IntegrationTest1_DoorUI.cs" />
     <Compile Include="IntegrationTest2_ButtonUI.cs" />
     <Compile Include="IntegrationTest3_Light.cs" />
+    <Compile Include="IntegrationTest4_UIDisplay.cs" />
+    <Compile Include="IntegrationTest5_UICC.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Microwave.Application\Microwave.Application.csproj">
