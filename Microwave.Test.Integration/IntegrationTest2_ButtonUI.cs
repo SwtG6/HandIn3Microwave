@@ -76,7 +76,7 @@ namespace Microwave.Test.Integration
         }
 
         [Test] // Test 3: Der trykkes op StartCancelButton under cooking og PT slukkes samt displayet blankes. UC Extension 3.
-        public void StartCancelButton_PTDisplayTest()
+        public void StartCancelButton_PTAndDisplayTest()
         {
             _startCancelButton.Press();
 
@@ -109,18 +109,70 @@ namespace Microwave.Test.Integration
 
         #endregion Små tests af enkelte Use Case steps
 
-        #region Fulde Use case tests
+        #region Fulde Use Case tests
 
-        [Test]
-        public void testetstetsts()
+        [Test] // Test 1 : Der trykkes på én gang hver på  PowerButton, TimeButton og StartCancelButton, og lyset i mikrobølgeovnen tændes til sidst. UC 6, 7 & 8 (ish).
+        public void PowerButton_TimeButton_StartCancelButton_LightTest()
         {
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
 
+            _light.Received(1).TurnOn();
+        }
 
+        [Test] // Test 2: Der trykkes flere gange på PowerButton og Display viser den korrekte værdi for det valgte Power level. UC 6.
+        public void MultiplePowerButton_DisplayTest(int NumberOfPresses, int PowerLevel)
+        {
+            NumberOfPresses = 5;    // Der trykkes 5 gange på PowerButton
+            PowerLevel = 250;       // Dette skulle gerne resultere i at Display viser Power level 250W.
+            
+            for(int i = 0; i < NumberOfPresses; i++)
+            {
+                _powerButton.Press();
+            }
+            _display.Received(1).ShowPower(PowerLevel);
+        }
 
+        [Test] // Test 3: Der trykkes på StartCancelButton under Power Setup, og Display blankes. Extension 1.
+        public void StartCancelButtonOnPowerSetup_DisplayTest()
+        {
+            _powerButton.Press();
+            _startCancelButton.Press();
+
+            _display.Received(1).Clear();
         }
 
 
-        #endregion Fulde Use case tests
+        [Test] // Test 4: Der trykkes flere gange på TimeButton og Display viser den korrekte værdie for den valgte tid. UC 7.
+        public void MultipleTimeButton_DisplayTest(int NumberOfPresses, int TimerSetting)
+        {
+            NumberOfPresses = 5;
+            TimerSetting = 05;
+
+            _powerButton.Press();
+
+            for(int i = 0; i < NumberOfPresses; i++)
+            {
+                _timeButton.Press();
+            }
+
+            _display.Received(1).ShowTime(TimerSetting,00);
+        }
+
+        [Test] // Test 4: Døren åbnes under Timer Setup, og Light tændes samt Display blankes. Extension 2.
+        public void DoorOpenTimerSetting_LightAndDisplayTest()
+        {
+            _powerButton.Press();
+            _timeButton.Press();
+
+            _door.Open();
+
+            _light.Received(1).TurnOff();
+            _display.Received(1).Clear();
+        }
+
+        #endregion Fulde Use Case tests
 
     }
 }
