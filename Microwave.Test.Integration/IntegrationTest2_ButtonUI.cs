@@ -45,9 +45,9 @@ namespace Microwave.Test.Integration
 
             _uut = new UserInterface
             (
-                _startCancelButton,
                 _powerButton,
                 _timeButton,
+                _startCancelButton,
                 _door,
                 _display,
                 _light,
