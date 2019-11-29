@@ -85,13 +85,26 @@ namespace Microwave.Test.Integration
             _powerButton.Press();
             _timeButton.Press();
             _startCancelButton.Press();
-
             _door.Open();
             _cookController.Received(1).Stop();
             
         }
 
+        [Test]
+        public void PressStartButtonWhenCooking()
+        {
+            _door.Open();
+            _light.Received(1).TurnOn();
+            _door.Close();
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
+            System.Threading.Thread.Sleep(1000);
 
+            _startCancelButton.Press();
+            _cookController.Received(1).Stop();
+            _light.Received(2).TurnOff();
+        }
 
         #endregion
 
