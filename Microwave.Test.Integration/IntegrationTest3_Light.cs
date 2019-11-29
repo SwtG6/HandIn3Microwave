@@ -22,7 +22,7 @@ namespace Microwave.Test.Integration
         private ITimer _timer;
         private IDoor _door;
         private IOutput _output;
-        private IUserInterface _userInterface;
+        //  private IUserInterface _userInterface;
         private ILight _light;
         private UserInterface _iut;
 

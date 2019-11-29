@@ -39,7 +39,9 @@ namespace Microwave.Test.Integration
             _startCancelButton = new Button();
             _powerButton = new Button();
             _timeButton = new Button();
+            _door = new Door();
 
+            _cookController = Substitute.For<ICookController>();
             _powerTube = Substitute.For<IPowerTube>();
             _timer = Substitute.For<ITimer>();
 
