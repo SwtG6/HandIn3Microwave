@@ -18,7 +18,7 @@ namespace Microwave.Test.Integration
         private IUserInterface _userInterface;
         private ICookController _uut;
         private IDisplay _display;
-        private IntegrationTest7_CCPowerTube _powerTube;
+        private IPowerTube _powerTube;
         private ITimer _timer;
         private IOutput _output;
         
@@ -28,11 +28,18 @@ namespace Microwave.Test.Integration
         [SetUp]
         public void SetUp()
         {
+
+            // fakes
             _output = Substitute.For<IOutput>();
             _timer = Substitute.For<ITimer>();
+            _userInterface = Substitute.For<IUserInterface>();
+
+
+            // ctors
             _display = new Display(_output);
             _powerTube = new PowerTube(_output);
-            _userInterface = Substitute.For<IUserInterface>();
+
+            // uut
             _uut = new CookController(_timer, _display, _powerTube, _userInterface);
         }
 
