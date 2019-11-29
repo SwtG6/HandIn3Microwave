@@ -3,10 +3,61 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MicrowaveOvenClasses.Boundary;
+using MicrowaveOvenClasses.Controllers;
+using MicrowaveOvenClasses.Interfaces;
+using NSubstitute;
+using NUnit.Framework;
 
 namespace Microwave.Test.Integration
 {
-    class IntegrationTest7_CCPowerTube
+    public class IntegrationTest7_CCPowerTube
     {
+        
+
+        private IUserInterface _userInterface;
+        private ICookController _uut;
+        private IDisplay _display;
+        private IntegrationTest7_CCPowerTube _powerTube;
+        private ITimer _timer;
+        private IOutput _output;
+        
+
+        
+
+        [SetUp]
+        public void SetUp()
+        {
+            _output = Substitute.For<IOutput>();
+            _timer = Substitute.For<ITimer>();
+            _display = new Display(_output);
+            _powerTube = new PowerTube(_output);
+            _userInterface = Substitute.For<IUserInterface>();
+            _uut = new CookController(_timer, _display, _powerTube, _userInterface);
+        }
+
+        
+
+        [TestCase(50, 7)]
+        [TestCase(350, 50)]
+        [TestCase(700, 100)]
+        public void TestTurnsOn(int power, int percent)
+        {
+            _uut.StartCooking(power, 100);
+
+            _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains($"PowerTube varmer med {percent} procent")));
+
+        }
+
+        [Test]
+        public void TestTurnsOff()
+        {
+            _uut.StartCooking(150, 100);
+
+            _timer.Expired += Raise.EventWith<EventArgs>();
+            _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("Off")));
+        }
+             
     }
 }
+
