@@ -45,6 +45,9 @@
     <Compile Include="IntegrationTest3_Light.cs" />
     <Compile Include="IntegrationTest4_UIDisplay.cs" />
     <Compile Include="IntegrationTest5_UICC.cs" />
+    <Compile Include="IntegrationTest6_CCDisplay.cs" />
+    <Compile Include="IntegrationTest7_CCPowerTube.cs" />
+    <Compile Include="IntegrationTest8_CCTimer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Microwave.Application\Microwave.Application.csproj">
