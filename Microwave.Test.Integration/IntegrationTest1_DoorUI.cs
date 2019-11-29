@@ -25,6 +25,9 @@ namespace Microwave.Test.Integration
         private ILight _light;
         private IUserInterface _uut;
 
+        #region Setup
+
+
         [SetUp]
         public void SetUp()
         {
@@ -32,12 +35,11 @@ namespace Microwave.Test.Integration
             _cookController = Substitute.For<ICookController>();
             _display = Substitute.For<IDisplay>();
             _light = Substitute.For<ILight>();
-
+            _powerButton = Substitute.For<IButton>();
+            _startCancelButton = Substitute.For<IButton>();
+            _timeButton = Substitute.For<IButton>();
 
             //Ctors
-            _powerButton = new Button();
-            _timeButton = new Button();
-            _startCancelButton = new Button();
             _door = new Door();
 
             //uut
@@ -52,6 +54,10 @@ namespace Microwave.Test.Integration
                 _cookController
             );
         }
+
+        #endregion
+
+        #region tests
 
         [Test]
         public void OpenDoor()
@@ -75,8 +81,20 @@ namespace Microwave.Test.Integration
             
             _door.Open();
             _light.Received(1).TurnOn();
+            _door.Close();
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
+
+            _door.Open();
+            _cookController.Received(1).Stop();
             
         }
+
+
+
+        #endregion
+
 
     }
 
