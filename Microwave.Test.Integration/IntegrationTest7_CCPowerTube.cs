@@ -38,7 +38,7 @@ namespace Microwave.Test.Integration
 
         
 
-        [TestCase(50, 7)]
+        [TestCase(50, 5)]
         [TestCase(350, 50)]
         [TestCase(700, 100)]
         public void TestTurnsOn(int power, int percent)
@@ -57,7 +57,18 @@ namespace Microwave.Test.Integration
             _timer.Expired += Raise.EventWith<EventArgs>();
             _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("Off")));
         }
-             
+
+        [Test]
+        public void TestTurnsOffWhenButtonIsPressed()
+        {
+            _uut.StartCooking(150, 100);
+            _uut.Stop();
+
+            _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("Off")));
+
+        }
+
+     
     }
 }
 
