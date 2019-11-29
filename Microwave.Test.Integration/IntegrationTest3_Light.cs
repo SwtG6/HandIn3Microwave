@@ -16,15 +16,15 @@ namespace Microwave.Test.Integration
         private IButton _powerButton;
         private IButton _timeButton;
         private IButton _startCancelButton;
+
         private ICookController _cookController;
         private IDisplay _display;
         private IPowerTube _powerTube;
         private ITimer _timer;
         private IDoor _door;
         private IOutput _output;
-        //  private IUserInterface _userInterface;
         private ILight _light;
-        private UserInterface _iut;
+        private UserInterface _uut;
 
         [SetUp]
         public void SetUp()
@@ -33,18 +33,28 @@ namespace Microwave.Test.Integration
             _output = Substitute.For<IOutput>();
             _powerTube = Substitute.For<IPowerTube>();
             _timer = Substitute.For<ITimer>();
+            _cookController = Substitute.For<ICookController>();
+            _display = Substitute.For<IDisplay>();
+
 
             //Ctors
             _powerButton = new Button();
             _timeButton = new Button();
             _startCancelButton = new Button();
-            _cookController = new CookController(_timer, _display, _powerTube, _iut);
-            _display = new Display(_output);
             _door = new Door();
             _light = new Light(_output);
 
-            //uit
-            _iut = new UserInterface(_powerButton, _timeButton, _startCancelButton, _door, _display, _light, _cookController);
+            //uut
+            _uut = new UserInterface
+            (
+                _powerButton,
+                _timeButton,
+                _startCancelButton,
+                _door,
+                _display,
+                _light,
+                _cookController
+            );
 
         }
 
@@ -65,11 +75,45 @@ namespace Microwave.Test.Integration
 
         }
 
-        //TODO add test for light on when MW is running
-        //TODO add test for light off when MW is running and is canceled using button
-        //TODO add test for light off when MW is running reaches timer cooking point
+        [Test]
+        public void LightOnWhenCooking()
+        {
+            _door.Open();
+            _door.Close();
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
+            _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("on")));
 
+        }
+
+        [Test]
+        public void LightOffWhenPressingCancelButtonWhenCooking()
+        {
+            _door.Open();
+            _door.Close();
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
+            System.Threading.Thread.Sleep(1000);
+
+            _startCancelButton.Press();
+            _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("off")));
+
+        }
+
+        [Test]
+        public void LightOffWhenCookingDone()
+        {
+            _door.Open();
+            _door.Close();
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
+            _uut.CookingIsDone();
+            _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("done")));
+            // I Added a _output in the original code that states "Cooking job done"
+        }
 
     }
-
 }

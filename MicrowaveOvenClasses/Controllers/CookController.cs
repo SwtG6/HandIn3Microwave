@@ -11,6 +11,7 @@ namespace MicrowaveOvenClasses.Controllers
 
         private bool isCooking = false;
 
+        private IOutput myOutput;
         private IDisplay myDisplay;
         private IPowerTube myPowerTube;
         private ITimer myTimer;
@@ -58,6 +59,7 @@ namespace MicrowaveOvenClasses.Controllers
                 myPowerTube.TurnOff();
                 UI.CookingIsDone();
                 isCooking = false;
+                myOutput.OutputLine("Cooking job done"); // Added to original code
             }
         }
 
