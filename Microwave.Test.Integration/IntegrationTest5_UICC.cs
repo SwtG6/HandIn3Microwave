@@ -77,5 +77,82 @@ namespace Microwave.Test.Integration
 
         #endregion SetUp
 
+        #region Fulde Use case tests
+
+        [Test] // Test 1: Tester om Power Tube bliver indstillet til det rigtige Power level ved ét tryk på powerknappen. UC 1-10.
+        public void CorrectPowerOnCookStart_PowerTubeTest()
+        {
+            _door.Open();
+            _door.Close();
+
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
+
+            _powerTube.Received(1).TurnOn(50);
+        }
+
+        [Test] // Test 2: Tester om Power Tube bliver indstillet til det rigtige Power level ved flere tryk på powerknappen. UC 1-10.
+        public void CorrectPowerOnCookStart_MultiplePowerTubeTest(int NumberOfPresses, int PowerLevel)
+        {
+            NumberOfPresses = 5;
+            PowerLevel = 250;
+
+            _door.Open();
+            _door.Close();
+
+            for(int i = 0; i < NumberOfPresses; i++)
+            {
+                _powerButton.Press();
+            }
+
+            _timeButton.Press();
+            _startCancelButton.Press();
+
+            _powerTube.Received(1).TurnOn(PowerLevel);
+        }
+
+        [Test] // Test 3: Tester om Timer bliver indstillet til den rigtige Timer Setting ved ét tryk på timerknappen. UC 1-10.
+        public void CorrectTimerOnCookStart_TimerTest()
+        {
+            _door.Open();
+            _door.Close();
+
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
+
+            _timer.Received(1).Start(60);   // tid i sekunder, ikke i minutter.
+        }
+
+        [Test] // Test 4: Tester om Timer bliver indstillet til den rigtige Timer Setting ved flere tryk på timerknappen. UC 1-10.
+        public void CorrectTimerOnCookStart_MultipleTimerTest(int NumberOfPresses, int TimerSetting)
+        {
+            NumberOfPresses = 5;
+            TimerSetting = 5;
+
+            _door.Open();
+            _door.Close();
+
+            _powerButton.Press();
+
+            for(int i = 0; i < NumberOfPresses; i++)
+            {
+                _timeButton.Press();
+            }
+
+            _startCancelButton.Press();
+
+            
+            _timer.Received(1).Start(TimerSetting*60);   // tid i sekunder, ikke i minutter.
+        }
+
+
+        [Test] // Test 5: 
+
+
+        #endregion Fulde Use case tests
+
+
     }
 }
