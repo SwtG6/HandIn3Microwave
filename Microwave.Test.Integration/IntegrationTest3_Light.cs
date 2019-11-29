@@ -26,6 +26,8 @@ namespace Microwave.Test.Integration
         private ILight _light;
         private UserInterface _uut;
 
+        #region Setup
+
         [SetUp]
         public void SetUp()
         {
@@ -58,7 +60,12 @@ namespace Microwave.Test.Integration
 
         }
 
-        [Test]
+        #endregion
+
+        #region tests
+
+
+        [Test] // Test for om Light tænder når Door åbnes
         public void OpenDoorTurnsLightOn()
         {
             _door.Open();
@@ -66,7 +73,7 @@ namespace Microwave.Test.Integration
 
         }
 
-        [Test]
+        [Test] // Test for om Light slukker når Door lukkes
         public void ClosingDoorTurnsLightOff()
         {
             _door.Open();
@@ -75,7 +82,7 @@ namespace Microwave.Test.Integration
 
         }
 
-        [Test]
+        [Test] // test for om Light tænder når start knap trykkes på
         public void LightOnWhenCooking()
         {
             _door.Open();
@@ -87,7 +94,7 @@ namespace Microwave.Test.Integration
 
         }
 
-        [Test]
+        [Test] // test for om Light slukker når man trykker på cancel imens der "kokkereres"
         public void LightOffWhenPressingCancelButtonWhenCooking()
         {
             _door.Open();
@@ -102,7 +109,7 @@ namespace Microwave.Test.Integration
 
         }
 
-        [Test]
+        [Test] // test for om Light slukker når timer udløber og "CookingIsDone()"
         public void LightOffWhenCookingDone()
         {
             _door.Open();
@@ -114,6 +121,8 @@ namespace Microwave.Test.Integration
             _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("done")));
             // I Added a _output in the original code that states "Cooking job done"
         }
+
+        #endregion
 
     }
 }
