@@ -123,7 +123,7 @@ namespace Microwave.Test.Integration
 
             _powerButton.Press();
             _timeButton.Press();
-            //_startCancelButton.Press();
+            _startCancelButton.Press();
 
             // _timer.Received(1).Start(60);   // tid i sekunder, ikke i minutter.
 
@@ -195,7 +195,8 @@ namespace Microwave.Test.Integration
             _startCancelButton.Press();
 
 
-            _door.Opened += Raise.EventWith(this, EventArgs.Empty);
+            //_door.Opened += Raise.EventWith(this, EventArgs.Empty);
+            _door.Open();
             _powerTube.Received(1).TurnOff();
         }
 
@@ -210,7 +211,8 @@ namespace Microwave.Test.Integration
             _startCancelButton.Press();
 
 
-            _door.Opened += Raise.EventWith(this, EventArgs.Empty);
+            //_door.Opened += Raise.EventWith(this, EventArgs.Empty);
+            _door.Open();
             _timer.Received(1).Stop();
         }
 
