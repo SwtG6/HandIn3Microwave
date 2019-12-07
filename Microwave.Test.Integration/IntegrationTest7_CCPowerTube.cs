@@ -61,7 +61,7 @@ namespace Microwave.Test.Integration
         {
             _uut.StartCooking(150, 100);
 
-            _timer.Expired += Raise.EventWith<EventArgs>();
+            _timer.Expired += Raise.EventWith(this, EventArgs.Empty);
             _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("Off")));
         }
 
