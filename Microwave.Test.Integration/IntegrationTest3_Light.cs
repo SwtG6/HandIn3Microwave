@@ -90,7 +90,7 @@ namespace Microwave.Test.Integration
             _powerButton.Press();
             _timeButton.Press();
             _startCancelButton.Press();
-            _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("Light is turned on")));
+            _output.Received(2).OutputLine(Arg.Is<string>(str => str.Contains("Light is turned on")));
 
         }
 
@@ -105,7 +105,7 @@ namespace Microwave.Test.Integration
             System.Threading.Thread.Sleep(1000);
 
             _startCancelButton.Press();
-            _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("Light is turned off")));
+            _output.Received(2).OutputLine(Arg.Is<string>(str => str.Contains("Light is turned off")));
 
         }
 
@@ -118,7 +118,7 @@ namespace Microwave.Test.Integration
             _timeButton.Press();
             _startCancelButton.Press();
             _uut.CookingIsDone();
-            _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("Light is turned off")));
+            _output.Received(2).OutputLine(Arg.Is<string>(str => str.Contains("Light is turned off")));
             // I Added a _output in the original code that states "Cooking job done"
         }
 

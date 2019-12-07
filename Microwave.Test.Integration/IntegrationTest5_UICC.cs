@@ -127,7 +127,7 @@ namespace Microwave.Test.Integration
 
             // _timer.Received(1).Start(60);   // tid i sekunder, ikke i minutter.
 
-            _output.Received(1).OutputLine(Arg.Is("Display shows: 01:00"));
+            _output.Received(1).OutputLine("Display shows: 01:00");
         }
 
         [TestCase(5, 5)]
