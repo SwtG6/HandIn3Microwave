@@ -52,6 +52,7 @@ namespace Microwave.Test.Integration
 
             _userInterface = Substitute.For<IUserInterface>();
 
+            _output = Substitute.For<IOutput>();
 
             _cookController = new CookController
             (
