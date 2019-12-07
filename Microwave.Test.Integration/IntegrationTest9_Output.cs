@@ -45,7 +45,11 @@ namespace Microwave.Test.Integration
             _powerButton = new Button();
             _timeButton = new Button();
             _startCancelButton = new Button();
-            
+
+            _uut = new Output();
+
+            stringWriter = new StringWriter();
+            Console.SetOut(stringWriter);
         }
 
         #endregion
@@ -99,7 +103,7 @@ namespace Microwave.Test.Integration
         public void Test_PowerMeasurement()
         {
             _powerButton.Press();
-            Assert.That(stringWriter.ToString(), Does.StartWith("Display shows: 50W"));
+            Assert.That(stringWriter.ToString(), Does.Contain("Display shows: 50W"));
 
         }
 
