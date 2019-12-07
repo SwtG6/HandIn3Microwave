@@ -78,6 +78,11 @@ namespace Microwave.Test.Integration
         [Test] // Test 3: Der trykkes op StartCancelButton under cooking og PT slukkes samt displayet blankes. UC Extension 3.
         public void StartCancelButton_PTAndDisplayTest()
         {
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
+
+            System.Threading.Thread.Sleep(1000);
             _startCancelButton.Press();
 
             _cookController.Received(1).Stop();
@@ -94,10 +99,12 @@ namespace Microwave.Test.Integration
         [Test] // Test 5: Der trykkes på TimerButton én gang, og den valgte tid vises på displayet. UC 7
         public void TimeButton_DisplayTest()
         {
+            _powerButton.Press();
             _timeButton.Press();
 
             _display.Received(1).ShowTime(Arg.Is(01), Arg.Is(00));
             //_display.Received(1).ShowTime(Arg.Any<int>(), Arg.Any<int>()); - Virker måske bedre, da vi ikke kan garantere at første tryk giver 01:00 (Tjek unit tests).
+            //_display.Received(1).ShowTime($"Display shows: {01:D2}:{00:D2}");
         }
 
         #endregion Små tests af enkelte Use Case steps

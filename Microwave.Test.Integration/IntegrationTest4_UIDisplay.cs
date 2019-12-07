@@ -75,7 +75,10 @@ namespace Microwave.Test.Integration
             _output.Received(1).OutputLine($"Display shows: 50 W");
         }
 
-        [Test] // Test 2: Ved flere tryk på PowerButton viser displayet den rigtige værdi i W. UC 6.
+        [TestCase(3, 150)]
+        [TestCase(5, 250)]
+        [TestCase(10, 500)]
+        // Test 2: Ved flere tryk på PowerButton viser displayet den rigtige værdi i W. UC 6.
         public void DisplayShowsCorrectPowerMultiplePresses_OutputTest(int NumberOfPresses, int PowerLevel)
         {
             NumberOfPresses = 3;
@@ -98,7 +101,10 @@ namespace Microwave.Test.Integration
             _output.Received(1).OutputLine($"Display shows: {01:D2}:{00:D2}");
         }
 
-        [Test] // Test 4: Ved flere tryk på TimeButton viser displayet den rigtige værdi for tidsindstillingen. UC 7.
+        [TestCase(3, 03)]
+        [TestCase(5, 05)]
+        [TestCase(10, 10)]
+        // Test 4: Ved flere tryk på TimeButton viser displayet den rigtige værdi for tidsindstillingen. UC 7.
         public void DisplayShowsCorrectTimeMultiplePresses_OutputTest(int NumberOfPresses, int TimerSetting)
         {
 
