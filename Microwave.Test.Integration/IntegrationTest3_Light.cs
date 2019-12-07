@@ -87,9 +87,9 @@ namespace Microwave.Test.Integration
         {
             _door.Open();
             _door.Close();
-            _powerButton.Press();
-            _timeButton.Press();
-            _startCancelButton.Press();
+            _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
             _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("on")));
 
         }
@@ -99,12 +99,12 @@ namespace Microwave.Test.Integration
         {
             _door.Open();
             _door.Close();
-            _powerButton.Press();
-            _timeButton.Press();
-            _startCancelButton.Press();
+            _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
             System.Threading.Thread.Sleep(1000);
 
-            _startCancelButton.Press();
+            _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
             _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("off")));
 
         }
@@ -114,9 +114,9 @@ namespace Microwave.Test.Integration
         {
             _door.Open();
             _door.Close();
-            _powerButton.Press();
-            _timeButton.Press();
-            _startCancelButton.Press();
+            _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
             _uut.CookingIsDone();
             _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("done")));
             // I Added a _output in the original code that states "Cooking job done"

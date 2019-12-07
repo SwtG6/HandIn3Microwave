@@ -62,7 +62,7 @@ namespace Microwave.Test.Integration
         [Test] // Test 1: Der trykkes på StartCancelButton og lyset i mikrobølgeovnen tændes. UC: 8 & 9.
         public void StartCancelButton_LightTest()
         {
-            _startCancelButton.Press();
+            _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
             _light.Received(1).TurnOn();
         }
@@ -78,7 +78,7 @@ namespace Microwave.Test.Integration
         [Test] // Test 3: Der trykkes op StartCancelButton under cooking og PT slukkes samt displayet blankes. UC Extension 3.
         public void StartCancelButton_PTAndDisplayTest()
         {
-            _startCancelButton.Press();
+            _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
             _cookController.Received(1).Stop();
         }
@@ -86,7 +86,7 @@ namespace Microwave.Test.Integration
         [Test] // Test 4: Der trykkes på PowerButton én gang, og det valgte power level ændres samt opdateres på displayet. UC 6.
         public void PowerButton_SettingAndDisplayTest()
         {
-            _powerButton.Press();
+            _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
             _display.Received(1).ShowPower(Arg.Any<int>());
         }
@@ -94,7 +94,7 @@ namespace Microwave.Test.Integration
         [Test] // Test 5: Der trykkes på TimerButton én gang, og den valgte tid vises på displayet. UC 7
         public void TimeButton_DisplayTest()
         {
-            _timeButton.Press();
+            _timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
             _display.Received(1).ShowTime(Arg.Is(01), Arg.Is(00));
             //_display.Received(1).ShowTime(Arg.Any<int>(), Arg.Any<int>()); - Virker måske bedre, da vi ikke kan garantere at første tryk giver 01:00 (Tjek unit tests).
@@ -107,9 +107,9 @@ namespace Microwave.Test.Integration
         [Test] // Test 1 : Der trykkes på én gang hver på  PowerButton, TimeButton og StartCancelButton, og lyset i mikrobølgeovnen tændes til sidst. UC 6, 7 & 8 (ish).
         public void PowerButton_TimeButton_StartCancelButton_LightTest()
         {
-            _powerButton.Press();
-            _timeButton.Press();
-            _startCancelButton.Press();
+            _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
             _light.Received(1).TurnOn();
         }
@@ -122,7 +122,7 @@ namespace Microwave.Test.Integration
             
             for(int i = 0; i < NumberOfPresses; i++)
             {
-                _powerButton.Press();
+                _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
             }
             _display.Received(1).ShowPower(PowerLevel);
         }
@@ -130,8 +130,8 @@ namespace Microwave.Test.Integration
         [Test] // Test 3: Der trykkes på StartCancelButton under Power Setup, og Display blankes. Extension 1.
         public void StartCancelButtonOnPowerSetup_DisplayTest()
         {
-            _powerButton.Press();
-            _startCancelButton.Press();
+            _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
             _display.Received(1).Clear();
         }
@@ -147,7 +147,7 @@ namespace Microwave.Test.Integration
 
             for(int i = 0; i < NumberOfPresses; i++)
             {
-                _timeButton.Press();
+                _timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
             }
 
             _display.Received(1).ShowTime(TimerSetting,00);
@@ -156,8 +156,8 @@ namespace Microwave.Test.Integration
         [Test] // Test 4: Døren åbnes under Timer Setup, og Light tændes samt Display blankes. Extension 2.
         public void DoorOpenTimerSetting_LightAndDisplayTest()
         {
-            _powerButton.Press();
-            _timeButton.Press();
+            _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
             _door.Open();
 

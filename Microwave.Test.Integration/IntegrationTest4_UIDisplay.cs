@@ -70,7 +70,7 @@ namespace Microwave.Test.Integration
         [Test] // Test 1: Ved et enkelt tryk på PowerButton viser displayet den rigtige værdi i W. UC 6.
         public void DisplayShowsCorrectPower_OutputTest()
         {
-            _powerButton.Press();
+            _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
             _output.Received(1).OutputLine($"Display shows: 50 W");
         }
@@ -83,7 +83,7 @@ namespace Microwave.Test.Integration
 
             for(int i = 0; i < NumberOfPresses; i++)
             {
-                _powerButton.Press();
+                _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
             }
 
             _output.Received(1).OutputLine($"Display shows: {PowerLevel} W");
@@ -92,8 +92,8 @@ namespace Microwave.Test.Integration
         [Test] // Test 3: Ved et enkelt tryk på TimeButton viser displayet den rigtige værdi for tidsindstillingen. UC 7.
         public void DisplayShowsCorrectTime_OutputTest()
         {
-            _powerButton.Press();
-            _timeButton.Press();
+            _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
             _output.Received(1).OutputLine($"Display shows: {01:D2}:{00:D2}");
         }
@@ -105,11 +105,11 @@ namespace Microwave.Test.Integration
             NumberOfPresses = 3;
             TimerSetting = 03;
 
-            _powerButton.Press();
+            _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
             for (int i = 0; i < NumberOfPresses; i++)
             {
-                _timeButton.Press();
+                _timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
             }
 
             _output.Received(1).OutputLine($"Display shows: {TimerSetting:D2}:{00:D2}");
@@ -118,8 +118,8 @@ namespace Microwave.Test.Integration
         [Test] // Test 5: Display blankes når der afbrydes med StartCancelButton i Power indstilling. UC Extension 1.
         public void ClearDisplayOnPowerSetting_OutputTest()
         {
-            _powerButton.Press();
-            _startCancelButton.Press();
+            _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
             _output.Received(1).OutputLine($"Display cleared");
 
@@ -128,8 +128,8 @@ namespace Microwave.Test.Integration
         [Test] // Test 6: Display blankes når der afbrydes med StartCancelButton i Timer indstilling. UC Extension 3.
         public void ClearDisplayOnTimerSetting_OutputTest()
         {
-            _powerButton.Press();
-            _startCancelButton.Press();
+            _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
             _output.Received(1).OutputLine($"Display cleared");
         }

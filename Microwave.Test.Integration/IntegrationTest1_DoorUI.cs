@@ -96,12 +96,12 @@ namespace Microwave.Test.Integration
             _door.Open();
             _light.Received(1).TurnOn();
             _door.Close();
-            _powerButton.Press();
-            _timeButton.Press();
-            _startCancelButton.Press();
+            _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
             System.Threading.Thread.Sleep(1000);
 
-            _startCancelButton.Press();
+            _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
             _cookController.Received(1).Stop();
             _light.Received(2).TurnOff();
         }
