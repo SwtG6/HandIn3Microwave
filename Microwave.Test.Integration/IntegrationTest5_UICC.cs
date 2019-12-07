@@ -94,11 +94,12 @@ namespace Microwave.Test.Integration
             _powerTube.Received(1).TurnOn(50);
         }
 
-        [Test] // Test 2: Tester om Power Tube bliver indstillet til det rigtige Power level ved flere tryk på powerknappen. UC 1-10.
+        [TestCase(5, 250)]
+        // Test 2: Tester om Power Tube bliver indstillet til det rigtige Power level ved flere tryk på powerknappen. UC 1-10.
         public void CorrectPowerOnCookStart_MultiplePowerTubeTest(int NumberOfPresses, int PowerLevel)
         {
-            NumberOfPresses = 5;
-            PowerLevel = 250;
+            // NumberOfPresses = 5;
+            // PowerLevel = 250;
 
             _door.Open();
             _door.Close();
@@ -129,11 +130,12 @@ namespace Microwave.Test.Integration
             _output.Received(1).OutputLine(Arg.Is("Display shows: 01:00"));
         }
 
-        [Test] // Test 4: Tester om Timer bliver indstillet til den rigtige Timer Setting ved flere tryk på timerknappen. UC 1-10.
+        [TestCase(5, 5)]
+        // Test 4: Tester om Timer bliver indstillet til den rigtige Timer Setting ved flere tryk på timerknappen. UC 1-10.
         public void CorrectTimerOnCookStart_MultipleTimerTest(int NumberOfPresses, int TimerSetting)
         {
-            NumberOfPresses = 5;
-            TimerSetting = 5;
+            // NumberOfPresses = 5;
+            // TimerSetting = 5;
 
             _door.Open();
             _door.Close();

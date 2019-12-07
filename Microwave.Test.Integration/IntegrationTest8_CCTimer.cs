@@ -42,7 +42,7 @@ namespace Microwave.Test.Integration
             _uut.UI = _userInterface;
         }
 
-        [TestCase(1, 1000)]
+        [TestCase(1, 2000)]
         public void OnTimerTickCookControllerLogsOutput(int times, int delay)
         {
             _door.Open();

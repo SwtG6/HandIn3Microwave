@@ -44,7 +44,7 @@ namespace Microwave.Test.Integration
 
         #region tests
 
-        [TestCase(100, 1, 60)]
+        [TestCase(100, 60, 1)]
         // test for om Timer "ticker" ned som tiden går generelt
         public void TimerTick(int power, int time, int tick)
         {
@@ -55,9 +55,9 @@ namespace Microwave.Test.Integration
             _output.Received(1).OutputLine($"Display shows: {0:D2}:{59:D2}");
         }
 
-        [TestCase(100, 10, 60)]
-        [TestCase(100, 20, 60)]
-        [TestCase(100, 30, 60)]
+        [TestCase(100, 60, 10)]
+        [TestCase(100, 60, 20)]
+        [TestCase(100, 60, 30)]
         // test for om Timer "ticker" ned som tiden går løbende
         public void TimerTicks(int power, int time, int tick)
         {
