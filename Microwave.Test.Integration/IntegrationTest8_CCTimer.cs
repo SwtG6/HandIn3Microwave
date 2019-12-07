@@ -49,13 +49,13 @@ namespace Microwave.Test.Integration
             _door.Open();
             _door.Close();
 
-            _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _powerButton.Press();
             for (int i = times; (i > 0); i--)
             {
-                _timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+                _timeButton.Press();
             }
 
-            _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _startCancelButton.Press();
 
 
             System.Threading.Thread.Sleep(delay);
@@ -69,13 +69,13 @@ namespace Microwave.Test.Integration
             _door.Open();
             _door.Close();
 
-            _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _powerButton.Press();
             for (int i = times; (i > 0); i--)
             {
-                _timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+                _timeButton.Press();
             }
 
-            _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _startCancelButton.Press();
 
 
             System.Threading.Thread.Sleep(delay);

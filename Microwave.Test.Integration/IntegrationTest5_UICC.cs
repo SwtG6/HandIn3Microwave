@@ -87,9 +87,9 @@ namespace Microwave.Test.Integration
             _door.Open();
             _door.Close();
 
-            _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
-            _timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
-            _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
 
             _powerTube.Received(1).TurnOn(50);
         }
@@ -105,11 +105,11 @@ namespace Microwave.Test.Integration
 
             for(int i = 0; i < NumberOfPresses; i++)
             {
-                _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+                _powerButton.Press();
             }
 
-            _timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
-            _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _timeButton.Press();
+            _startCancelButton.Press();
 
             _powerTube.Received(1).TurnOn(PowerLevel);
         }
@@ -120,9 +120,9 @@ namespace Microwave.Test.Integration
             _door.Open();
             _door.Close();
 
-            _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
-            _timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
-            _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
 
             // _timer.Received(1).Start(60);   // tid i sekunder, ikke i minutter.
 
@@ -138,14 +138,14 @@ namespace Microwave.Test.Integration
             _door.Open();
             _door.Close();
 
-            _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _powerButton.Press();
 
             for (int i = 0; i < NumberOfPresses; i++)
             {
-                _timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+                _timeButton.Press();
             }
 
-            _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _startCancelButton.Press();
 
 
             _timer.Received(1).Start(TimerSetting*60);   // tid i sekunder, ikke i minutter.
@@ -158,12 +158,12 @@ namespace Microwave.Test.Integration
             _door.Open();
             _door.Close();
 
-            _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
-            _timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
-            _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
 
 
-            _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _startCancelButton.Press();
             _powerTube.Received(1).TurnOff();
         }
 
@@ -173,12 +173,12 @@ namespace Microwave.Test.Integration
             _door.Open();
             _door.Close();
 
-            _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
-            _timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
-            _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
 
 
-            _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _startCancelButton.Press();
             _timer.Received(1).Stop();
         }
 
@@ -188,9 +188,9 @@ namespace Microwave.Test.Integration
             _door.Open();
             _door.Close();
 
-            _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
-            _timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
-            _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
 
 
             _door.Opened += Raise.EventWith(this, EventArgs.Empty);
@@ -203,9 +203,9 @@ namespace Microwave.Test.Integration
             _door.Open();
             _door.Close();
 
-            _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
-            _timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
-            _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
 
 
             _door.Opened += Raise.EventWith(this, EventArgs.Empty);
