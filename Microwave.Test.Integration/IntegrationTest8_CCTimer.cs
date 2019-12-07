@@ -42,9 +42,9 @@ namespace Microwave.Test.Integration
             _uut.UI = _userInterface;
         }
 
-        [TestCase(1, "Display shows: {00:D2}:{05:D2}", 1000)]
-        [TestCase(2, "Display shows: {00:D2}:{55:D2}", 2000)]
-        public void OnTimerTickCookControllerLogsOutput(int times, string output, int delay)
+        [TestCase(1, 1000)]
+        [TestCase(2, 2000)]
+        public void OnTimerTickCookControllerLogsOutput(int times, int delay)
         {
             _door.Open();
             _door.Close();
@@ -59,12 +59,12 @@ namespace Microwave.Test.Integration
 
 
             System.Threading.Thread.Sleep(delay);
-            _output.Received(1).OutputLine(output);
+            _output.Received(1).OutputLine($"Display shows: {00:D2}:{_timer.TimeRemaining:D2}");
         }
 
-        [TestCase(1, "PowerTube turned off", 1 * 30000)]
-        [TestCase(2, "PowerTube turned off", 2 * 30000)]
-        public void OntimerExpire(int times, string output, int delay)
+        [TestCase(1, 1 * 30000)]
+        [TestCase(2, 2 * 30000)]
+        public void OntimerExpire(int times, int delay)
         {
             _door.Open();
             _door.Close();
@@ -79,7 +79,7 @@ namespace Microwave.Test.Integration
 
 
             System.Threading.Thread.Sleep(delay);
-            _output.Received(1).OutputLine(output);
+            _output.Received(1).OutputLine("PowerTube turned off");
         }
     }
 
