@@ -68,7 +68,7 @@ namespace Microwave.Test.Integration
             tick = 60;
 
 
-            _uut.StartCooking(100, time);
+            _uut.StartCooking(power, time);
 
             for (int i = 1; i < tick + 1; i++)
             {

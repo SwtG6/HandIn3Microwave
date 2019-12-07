@@ -30,6 +30,7 @@ namespace Microwave.Test.Integration
         private ICookController _cookController;
         private IPowerTube _powerTube;
         private ITimer _timer;
+        private IOutput _output;
 
         #endregion Properties
 
@@ -44,7 +45,7 @@ namespace Microwave.Test.Integration
             _door = new Door();
 
             _light = Substitute.For<ILight>();
-            _display = Substitute.For<IDisplay>();
+            _display = new Display(_output);
 
             _powerTube = Substitute.For<IPowerTube>();
             _timer = Substitute.For<ITimer>();
@@ -122,7 +123,9 @@ namespace Microwave.Test.Integration
             _timeButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
             _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
-            _timer.Received(1).Start(60);   // tid i sekunder, ikke i minutter.
+            // _timer.Received(1).Start(60);   // tid i sekunder, ikke i minutter.
+
+            _output.Received(1).OutputLine(Arg.Is("Display shows: 01:00"));
         }
 
         [Test] // Test 4: Tester om Timer bliver indstillet til den rigtige Timer Setting ved flere tryk på timerknappen. UC 1-10.
