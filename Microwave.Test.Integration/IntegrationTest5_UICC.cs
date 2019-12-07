@@ -123,7 +123,7 @@ namespace Microwave.Test.Integration
 
             _powerButton.Press();
             _timeButton.Press();
-            _startCancelButton.Press();
+            //_startCancelButton.Press();
 
             // _timer.Received(1).Start(60);   // tid i sekunder, ikke i minutter.
 
