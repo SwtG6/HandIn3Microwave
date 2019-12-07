@@ -23,6 +23,7 @@ namespace Microwave.Test.Integration
         private IUserInterface _uut;
         private ILight _light;
         private IDisplay _display;
+        private IOutput _output;
 
         private ICookController _cookController;
 
@@ -42,6 +43,7 @@ namespace Microwave.Test.Integration
 
             _cookController = Substitute.For<ICookController>();
 
+            _output = Substitute.For<IOutput>();
 
             _uut = new UserInterface
             (
@@ -64,7 +66,7 @@ namespace Microwave.Test.Integration
         {
             _startCancelButton.Press();
 
-            _light.Received(1).TurnOn();
+            _output.Received(1).OutputLine("Light is turned on");
         }
 
         //[Test] // Test 2: Der trykkes på StartCancelButton under Power-setup og displayet blankes. UC Extension 1.
@@ -171,8 +173,7 @@ namespace Microwave.Test.Integration
             _powerButton.Press();
             _timeButton.Press();
 
-            _door.Open();
-
+            _door.Opened += Raise.EventWith(this, EventArgs.Empty);
             _light.Received(1).TurnOff();
             _display.Received(1).Clear();
         }
