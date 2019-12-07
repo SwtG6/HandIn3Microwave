@@ -36,7 +36,7 @@ namespace MicrowaveOvenClasses.Boundary
         private void Expire()
         {
             timer.Enabled = false;
-            Expired?.Invoke(this, System.EventArgs.Empty);
+            Expired?.Invoke(this, EventArgs.Empty);
         }
 
         private void OnTimerEvent(object sender, System.Timers.ElapsedEventArgs args)
