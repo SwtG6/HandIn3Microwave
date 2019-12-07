@@ -75,7 +75,7 @@ namespace Microwave.Test.Integration
         {
             _door.Open();
             _door.Close();
-            Assert.That(stringWriter.ToString(), Does.EndWith(("Light is turned off")));
+            Assert.That(stringWriter.ToString(), Does.Contain(("Light is turned off")));
 
         }
 
@@ -117,7 +117,7 @@ namespace Microwave.Test.Integration
         {
            _powerButton.Press();
            _timeButton.Press();
-           Assert.That(stringWriter.ToString(), Does.EndWith("Display shows 01:00"));
+           Assert.That(stringWriter.ToString(), Does.Contain("Display shows 01:00"));
         }
 
         [Test]
@@ -143,7 +143,7 @@ namespace Microwave.Test.Integration
         {
             _cookController.StartCooking(50,10);
             Thread.Sleep(11000);
-            Assert.That(stringWriter.ToString(), Does.EndWith("PowerTube is turned off"));
+            Assert.That(stringWriter.ToString(), Does.Contain("PowerTube is turned off"));
         }
         
         #endregion
