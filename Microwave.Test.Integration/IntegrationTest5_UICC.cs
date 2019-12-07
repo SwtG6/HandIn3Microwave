@@ -189,7 +189,7 @@ namespace Microwave.Test.Integration
             _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
 
-            _door.Open();
+            _door.Opened += Raise.EventWith(this, EventArgs.Empty);
             _powerTube.Received(1).TurnOff();
         }
 
@@ -204,7 +204,7 @@ namespace Microwave.Test.Integration
             _startCancelButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
 
 
-            _door.Open();
+            _door.Opened += Raise.EventWith(this, EventArgs.Empty);
             _timer.Received(1).Stop();
         }
 
