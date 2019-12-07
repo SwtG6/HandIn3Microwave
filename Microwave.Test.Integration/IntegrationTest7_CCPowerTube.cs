@@ -48,12 +48,11 @@ namespace Microwave.Test.Integration
         [TestCase(50, 5)]
         [TestCase(350, 50)]
         [TestCase(700, 100)]
-        public void TestTurnsOn(int power, int percent)
+        public void TestTurnsOn(int power, int time)
         {
-            _uut.StartCooking(power, 100);
+            _uut.StartCooking(power, time);
 
-            _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains($"PowerTube varmer med {percent} procent")));
-
+            _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains($"PowerTube works with {power} W")));
         }
 
         [Test]
