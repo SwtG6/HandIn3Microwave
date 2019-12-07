@@ -42,8 +42,8 @@ namespace Microwave.Test.Integration
             _uut.UI = _userInterface;
         }
 
-        [TestCase(1, "Displayet viser 00:05", 1000)]
-        [TestCase(2, "Display viser 00:55", 2000)]
+        [TestCase(1, "Display shows: {00:D2}:{05:D2}", 1000)]
+        [TestCase(2, "Display shows: {00:D2}:{55:D2}", 2000)]
         public void OnTimerTickCookControllerLogsOutput(int times, string output, int delay)
         {
             _door.Open();
@@ -62,8 +62,8 @@ namespace Microwave.Test.Integration
             _output.Received(1).OutputLine(output);
         }
 
-        [TestCase(1, "PowerTube er slukket", 1 * 30000)]
-        [TestCase(2, "PowerTube er slukket", 2 * 30000)]
+        [TestCase(1, "PowerTube turned off", 1 * 30000)]
+        [TestCase(2, "PowerTube turned off", 2 * 30000)]
         public void OntimerExpire(int times, string output, int delay)
         {
             _door.Open();

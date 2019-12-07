@@ -61,7 +61,7 @@ namespace Microwave.Test.Integration
             _uut.StartCooking(150, 100);
 
             _timer.Expired += Raise.EventWith(this, EventArgs.Empty);
-            _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("Off")));
+            _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains($"PowerTube turned off")));
         }
 
         [Test]
@@ -70,7 +70,7 @@ namespace Microwave.Test.Integration
             _uut.StartCooking(150, 100);
             _uut.Stop();
 
-            _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("Off")));
+            _output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains($"PowerTube turned off")));
 
         }
 

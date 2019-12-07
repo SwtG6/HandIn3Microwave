@@ -45,18 +45,29 @@ namespace Microwave.Test.Integration
         #region tests
 
         [Test] // test for om Timer "ticker" ned som tiden går generelt
-        public void TimerTick(int time, int tick, string output)
+        public void TimerTick(int power, int time, int tick)
         {
-            _uut.StartCooking(100,time);
+            power = 100;
+            time = 50;
+            tick = 20;
+
+
+
+            _uut.StartCooking(power, time);
             _timer.TimeRemaining.Returns(time - tick);
             _timer.TimerTick += Raise.EventWith(this, EventArgs.Empty);
 
-            _output.Received(1).OutputLine(output);
+            _output.Received(1).OutputLine($"Display shows: {0:D2}:{30:D2}");
         }
 
         [Test] // test for om Timer "ticker" ned som tiden går løbende
-        public void TimerTicks(int time, int tick, string output)
+        public void TimerTicks(int power, int time, int tick)
         {
+            power = 500;
+            time = 120;
+            tick = 60;
+
+
             _uut.StartCooking(100, time);
 
             for (int i = 1; i < tick + 1; i++)
@@ -64,7 +75,7 @@ namespace Microwave.Test.Integration
                 _timer.TimeRemaining.Returns(time - i);
                 _timer.TimerTick += Raise.EventWith(this, EventArgs.Empty);
             }
-            _output.Received(1).OutputLine(output);
+            _output.Received(1).OutputLine($"Display shows: {01:D2}:{00:D2}");
 
         }
 
