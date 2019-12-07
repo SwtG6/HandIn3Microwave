@@ -43,7 +43,6 @@ namespace Microwave.Test.Integration
         }
 
         [TestCase(1, 1000)]
-        [TestCase(2, 2000)]
         public void OnTimerTickCookControllerLogsOutput(int times, int delay)
         {
             _door.Open();
@@ -62,8 +61,8 @@ namespace Microwave.Test.Integration
             _output.Received(1).OutputLine($"Display shows: {00:D2}:{_timer.TimeRemaining:D2}");
         }
 
-        [TestCase(1, 1 * 30000)]
-        [TestCase(2, 2 * 30000)]
+        [TestCase(1, 1 * 62000)]
+        [TestCase(2, 2 * 122000)]
         public void OntimerExpire(int times, int delay)
         {
             _door.Open();
