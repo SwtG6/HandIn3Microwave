@@ -85,11 +85,12 @@ namespace Microwave.Test.Integration
             _powerButton.Press();
             _timeButton.Press();
             _startCancelButton.Press();
+            _door.Open();
 
             //_door.Opened += Raise.EventWith(this, EventArgs.Empty);
 
 
-            
+
             _cookController.Received(1).Stop();
             
         }
