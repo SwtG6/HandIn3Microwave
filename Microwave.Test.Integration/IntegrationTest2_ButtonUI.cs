@@ -61,13 +61,14 @@ namespace Microwave.Test.Integration
 
         #region Små tests af enkelte Use Case steps
 
-        [Test] // Test 1: Der trykkes på StartCancelButton og lyset i mikrobølgeovnen tændes. UC: 8 & 9.
-        public void StartCancelButton_LightTest()
-        {
-            _startCancelButton.Press();
+        // Denne test er udkommenteret da den ikke giver mening at teste for sig selv i forhold til use cases.
+        //[Test] // Test 1: Der trykkes på StartCancelButton og lyset i mikrobølgeovnen tændes. UC: 8 & 9.
+        //public void StartCancelButton_LightTest()
+        //{
+        //    _startCancelButton.Press();
 
-            _output.Received(1).OutputLine("Light is turned on");
-        }
+        //    _output.Received(1).OutputLine("Light is turned on");
+        //}
 
         //[Test] // Test 2: Der trykkes på StartCancelButton under Power-setup og displayet blankes. UC Extension 1.
         //public void StartCancelButton_DisplayTest()
@@ -174,7 +175,7 @@ namespace Microwave.Test.Integration
             _timeButton.Press();
 
             _door.Opened += Raise.EventWith(this, EventArgs.Empty);
-            _light.Received(1).TurnOff();
+            //_light.Received(1).TurnOff();
             _display.Received(1).Clear();
         }
 
