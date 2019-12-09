@@ -171,11 +171,13 @@ namespace Microwave.Test.Integration
         [Test] // Test 4: Døren åbnes under Timer Setup, og Light tændes samt Display blankes. Extension 2.
         public void DoorOpenTimerSetting_LightAndDisplayTest()
         {
+            _door.Closed += Raise.EventWith(this, EventArgs.Empty);
+
             _powerButton.Press();
             _timeButton.Press();
 
             _door.Opened += Raise.EventWith(this, EventArgs.Empty);
-            //_light.Received(1).TurnOff();
+            _light.Received(1).TurnOff();
             _display.Received(1).Clear();
         }
 
