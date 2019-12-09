@@ -86,7 +86,7 @@ namespace Microwave.Test.Unit
             Assert.That(pause.WaitOne(2100));
             uut.Stop();
 
-            Assert.That(notifications, Is.EqualTo(2));
+            Assert.That(notifications, Is.EqualTo(1));
         }
 
     }
