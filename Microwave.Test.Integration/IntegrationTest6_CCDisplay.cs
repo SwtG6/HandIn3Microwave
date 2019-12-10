@@ -20,8 +20,8 @@ namespace Microwave.Test.Integration
         private IUserInterface _userInterface;
         private ICookController _uut;
 
-        private IDoor _door;
-        private IButton _powerButton, _timeButton, _startCancelButton;
+        //private IDoor _door;
+        //private IButton _powerButton, _timeButton, _startCancelButton;
 
         #region Setup
 
@@ -37,10 +37,10 @@ namespace Microwave.Test.Integration
             // ctor
             _display = new Display(_output);
 
-            _door = new Door();
-            _powerButton = new Button();
-            _timeButton = new Button();
-            _startCancelButton = new Button();
+            //_door = new Door();
+            //_powerButton = new Button();
+            //_timeButton = new Button();
+            //_startCancelButton = new Button();
 
 
             //uut
@@ -51,18 +51,6 @@ namespace Microwave.Test.Integration
         #endregion
 
         #region tests
-
-        [Test]
-        public void UserInterfaceCookController_TurnOnTest()
-        {
-            _powerButton.Press();
-            _timeButton.Press();
-            _startCancelButton.Press();
-
-            //_timer.Received(1).Start(Arg.Any<int>());
-            _powerTube.Received(1).TurnOn(Arg.Any<int>());
-        }
-
 
 
         [TestCase(100, 60, 1)]

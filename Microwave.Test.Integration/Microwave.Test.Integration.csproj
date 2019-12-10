@@ -52,6 +52,7 @@
     <Compile Include="IntegrationTest7_CCPowerTube.cs" />
     <Compile Include="IntegrationTest8_CCTimer.cs" />
     <Compile Include="IntegrationTest9_Output.cs" />
+    <Compile Include="IT_CC.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MicrowaveOvenClasses\MicrowaveOvenClasses.csproj">
