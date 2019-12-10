@@ -19,21 +19,20 @@ namespace Microwave.Test.Integration
     {
         #region Properties
 
-        private UserInterface _uut;
-        //private IUserInterface _userInterface;
-
-        private IButton _startCancelButton;
         private IButton _powerButton;
         private IButton _timeButton;
+        private IButton _startCancelButton;
         private IDoor _door;
 
         private ILight _light;
         private IDisplay _display;
-
-        private CookController _cookController;
         private IPowerTube _powerTube;
         private ITimer _timer;
+
         private IOutput _output;
+
+        private CookController _cookController;
+        private UserInterface _uut;
 
         #endregion Properties
 
@@ -42,58 +41,37 @@ namespace Microwave.Test.Integration
         [SetUp]
         public void SetUp()
         {
-            _startCancelButton = new Button();
+            _output = Substitute.For<IOutput>();
+            _timer = Substitute.For<ITimer>();
+            _powerTube = Substitute.For<IPowerTube>();
+            _light = Substitute.For<ILight>();
+
             _powerButton = new Button();
             _timeButton = new Button();
+            _startCancelButton = new Button();
             _door = new Door();
 
-            _light = Substitute.For<ILight>();
             _display = new Display(_output);
 
-            _powerTube = Substitute.For<IPowerTube>();
-            _timer = Substitute.For<ITimer>();
-
-            //_userInterface = Substitute.For<IUserInterface>();
-
-            _output = Substitute.For<IOutput>();
-
-            _cookController = new CookController
-            (
-                _timer,
-                _display,
-                _powerTube
-            );
-
-
-            _uut = new UserInterface
-            (
-                _powerButton,
-                _timeButton,
-                _startCancelButton,
-                _door,
-                _display,
-                _light,
-                _cookController
-            );
-
+            _cookController = new CookController(_timer, _display, _powerTube);
+            _uut = new UserInterface(_powerButton, _timeButton, _startCancelButton, _door, _display, _light, _cookController);
             _cookController.UI = _uut;
-
         }
 
         #endregion SetUp
 
         #region Fulde Use case tests
 
-        //[Test]
-        //public void UserInterfaceCookController_TurnOnTest()
-        //{
-        //    _powerButton.Press();
-        //    _timeButton.Press();
-        //    _startCancelButton.Press();
+        [Test]
+        public void UserInterfaceCookController_TurnOnTest()
+        {
+            _powerButton.Press();
+            _timeButton.Press();
+            _startCancelButton.Press();
 
-        //    _timer.Received(1).Start(Arg.Any<int>());
-        //    _powerTube.Received(1).TurnOn(Arg.Any<int>());
-        //}
+            _timer.Received(1).Start(Arg.Any<int>());
+            _powerTube.Received(1).TurnOn(Arg.Any<int>());
+        }
 
 
         //[Test] // Test 1: Tester om Power Tube bliver indstillet til det rigtige Power level ved ét tryk på powerknappen. UC 1-10.
@@ -237,3 +215,4 @@ namespace Microwave.Test.Integration
         #endregion Fulde Use case tests
     }
 }
+
