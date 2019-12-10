@@ -126,8 +126,8 @@ namespace Microwave.Test.Integration
             _startCancelButton.Press();
 
             // _timer.Received(1).Start(60);   // tid i sekunder, ikke i minutter.
-            _display.Received(1).ShowTime(01, 00);
-            //_output.Received(1).OutputLine($"Display shows: {01:D2}:{00:D2}");
+            //_display.Received(1).ShowTime(01, 00);
+            _output.Received(1).OutputLine($"Display shows: {01:D2}:{00:D2}");
         }
 
         [TestCase(5, 5)]
@@ -157,8 +157,8 @@ namespace Microwave.Test.Integration
         [Test] // Test 5: Tester om PowerTube slukker når der trykkes på StartCancelButton under tilberedning. Extension 3.
         public void CancelCooking_PowerTubeTest()
         {
-            _door.Open();
-            _door.Close();
+            //_door.Open();
+            //_door.Close();
 
             _powerButton.Press();
             _timeButton.Press();
