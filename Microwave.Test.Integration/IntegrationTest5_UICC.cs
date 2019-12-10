@@ -84,16 +84,16 @@ namespace Microwave.Test.Integration
 
         #region Fulde Use case tests
 
-        [Test]
-        public void UserInterfaceCookController_TurnOnTest()
-        {
-            _powerButton.Press();
-            _timeButton.Press();
-            _startCancelButton.Press();
+        //[Test]
+        //public void UserInterfaceCookController_TurnOnTest()
+        //{
+        //    _powerButton.Press();
+        //    _timeButton.Press();
+        //    _startCancelButton.Press();
 
-            _timer.Received(1).Start(Arg.Any<int>());
-            _powerTube.Received(1).TurnOn(Arg.Any<int>());
-        }
+        //    _timer.Received(1).Start(Arg.Any<int>());
+        //    _powerTube.Received(1).TurnOn(Arg.Any<int>());
+        //}
 
 
         //[Test] // Test 1: Tester om Power Tube bliver indstillet til det rigtige Power level ved ét tryk på powerknappen. UC 1-10.
