@@ -86,9 +86,7 @@ namespace Microwave.Test.Integration
             _timeButton.Press();
             _startCancelButton.Press();
 
-            _userInterface.CookingIsDone();
-
-            Assert.That(stringWriter.ToString(), Does.Contain("Light is turned off"));
+            Assert.That(stringWriter.ToString(), Does.Contain("Light is turned on"));
 
         }
 
