@@ -170,20 +170,20 @@ namespace Microwave.Test.Integration
         //    //_powerTube.Received(1).TurnOff();
         //}
 
-        [Test] // Test 6: Tester om Timer slukker når der trykkes på StartCancelButton under tilberedning. Extension 3.
-        public void CancelCooking_TimerAndPowerTubeTest()
-        {
-            _door.Open();
-            _door.Close();
+        //[Test] // Test 6: Tester om Timer slukker når der trykkes på StartCancelButton under tilberedning. Extension 3.
+        //public void CancelCooking_TimerAndPowerTubeTest()
+        //{
+        //    _door.Open();
+        //    _door.Close();
 
-            _powerButton.Press();
-            _timeButton.Press();
-            _startCancelButton.Press();
+        //    _powerButton.Press();
+        //    _timeButton.Press();
+        //    _startCancelButton.Press();
 
 
-            _startCancelButton.Press();
-            _timer.Received(1).Stop();
-        }
+        //    _startCancelButton.Press();
+        //    _timer.Received(1).Stop();
+        //}
 
         [Test] // Test 7: Tester om PowerTube slukker når døren åbnes under tilberedning. Extension 4.
         public void DoorOpenCooking_PowerTubeTest()
