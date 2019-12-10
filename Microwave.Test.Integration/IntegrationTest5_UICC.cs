@@ -85,7 +85,6 @@ namespace Microwave.Test.Integration
             _timeButton.Press();
             _startCancelButton.Press();
 
-            _timer.Received(1).Stop();
             _powerTube.Received(1).TurnOn(50);
         }
 
