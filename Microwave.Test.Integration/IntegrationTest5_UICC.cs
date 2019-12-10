@@ -93,20 +93,20 @@ namespace Microwave.Test.Integration
         }
 
 
-        [Test] // Test 1: Tester om Power Tube bliver indstillet til det rigtige Power level ved ét tryk på powerknappen. UC 1-10.
-        public void CorrectPowerOnCookStart_PowerTubeTest()
-        {
-            _door.Open();
-            _door.Close();
+        //[Test] // Test 1: Tester om Power Tube bliver indstillet til det rigtige Power level ved ét tryk på powerknappen. UC 1-10.
+        //public void CorrectPowerOnCookStart_PowerTubeTest()
+        //{
+        //    _door.Open();
+        //    _door.Close();
 
-            _powerButton.Press();
-            //_powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
-            _timeButton.Press();
-            _startCancelButton.Press();
+        //    _powerButton.Press();
+        //    //_powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+        //    _timeButton.Press();
+        //    _startCancelButton.Press();
 
-            _timer.Received(1).Stop();
-            _powerTube.Received(1).TurnOn(50);
-        }
+        //    _timer.Received(1).Stop();
+        //    _powerTube.Received(1).TurnOn(50);
+        //}
 
         //[TestCase(5, 250)]
         //// Test 2: Tester om Power Tube bliver indstillet til det rigtige Power level ved flere tryk på powerknappen. UC 1-10.
