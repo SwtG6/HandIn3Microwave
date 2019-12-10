@@ -183,7 +183,6 @@ namespace Microwave.Test.Integration
 
             _startCancelButton.Press();
             _timer.Received(1).Stop();
-            _powerTube.Received(1).TurnOff();
         }
 
         [Test] // Test 7: Tester om PowerTube slukker når døren åbnes under tilberedning. Extension 4.
