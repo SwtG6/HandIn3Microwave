@@ -17,7 +17,7 @@ namespace Microwave.Test.Integration
         #region Properties
 
         private UserInterface _uut;
-        private IUserInterface _userInterface;
+        //private IUserInterface _userInterface;
 
         private IButton _startCancelButton;
         private IButton _powerButton;
@@ -50,7 +50,7 @@ namespace Microwave.Test.Integration
             _powerTube = Substitute.For<IPowerTube>();
             _timer = Substitute.For<ITimer>();
 
-            _userInterface = Substitute.For<IUserInterface>();
+            //_userInterface = Substitute.For<IUserInterface>();
 
             _output = Substitute.For<IOutput>();
 
@@ -59,7 +59,7 @@ namespace Microwave.Test.Integration
                 _timer,
                 _display,
                 _powerTube,
-                _userInterface
+                _uut
             );
 
 
