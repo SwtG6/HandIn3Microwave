@@ -90,10 +90,14 @@ namespace Microwave.Test.Integration
             _startCancelButton.Press();
             _door.Open();
 
-            
+            _display.Received(1).Clear();
+        
+
+           // _uut.Received(1).OnDoorOpened();
+
             //_door.Opened += Raise.EventWith(this, EventArgs.Empty);
 
-            //_cookController.Received(1).Stop();
+           // _cookController.Received(1).Stop();
             
         }
 
