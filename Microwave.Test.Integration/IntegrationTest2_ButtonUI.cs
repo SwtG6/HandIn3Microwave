@@ -23,7 +23,7 @@ namespace Microwave.Test.Integration
         private IUserInterface _uut;
         private ILight _light;
         private IDisplay _display;
-        private IOutput _output;
+        //private IOutput _output;
 
         private ICookController _cookController;
 
@@ -43,7 +43,7 @@ namespace Microwave.Test.Integration
 
             _cookController = Substitute.For<ICookController>();
 
-            _output = Substitute.For<IOutput>();
+            //_output = Substitute.For<IOutput>();
 
             _uut = new UserInterface
             (
@@ -106,8 +106,6 @@ namespace Microwave.Test.Integration
             _timeButton.Press();
 
             _display.Received(1).ShowTime(Arg.Is(01), Arg.Is(00));
-            //_display.Received(1).ShowTime(Arg.Any<int>(), Arg.Any<int>()); - Virker måske bedre, da vi ikke kan garantere at første tryk giver 01:00 (Tjek unit tests).
-            //_display.Received(1).ShowTime($"Display shows: {01:D2}:{00:D2}");
         }
 
         #endregion Små tests af enkelte Use Case steps

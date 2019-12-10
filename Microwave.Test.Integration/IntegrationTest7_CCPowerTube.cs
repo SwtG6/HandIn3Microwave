@@ -14,15 +14,12 @@ namespace Microwave.Test.Integration
     public class IntegrationTest7_CCPowerTube
     {
         
-
         private IUserInterface _userInterface;
         private ICookController _uut;
         private IDisplay _display;
         private IPowerTube _powerTube;
         private ITimer _timer;
         private IOutput _output;
-        
-
         
 
         [SetUp]
