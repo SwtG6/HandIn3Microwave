@@ -25,6 +25,8 @@ namespace Microwave.Test.Integration
         private ILight _light;
         private IUserInterface _uut;
 
+       
+
         #region Setup
 
 
@@ -39,6 +41,7 @@ namespace Microwave.Test.Integration
             _startCancelButton = Substitute.For<IButton>();
             _timeButton = Substitute.For<IButton>();
 
+            
             
 
             //Ctors
@@ -78,28 +81,15 @@ namespace Microwave.Test.Integration
             _light.Received(1).TurnOff();
         }
 
-        [Test]
-        public void OpenDoorWhenCooking()
-        {
+        //[Test]
+        //public void OpenDoorWhenCooking()
+        //{
             
-            _door.Open();
-            _light.Received(1).TurnOn();
-            _door.Close();
-            _powerButton.Press();
-            _timeButton.Press();
-            _startCancelButton.Press();
-            _door.Open();
+        //    _door.Open();
+        //    _light.Received(1).TurnOn();
+           
 
-            _display.Received(1).Clear();
-        
-
-           // _uut.Received(1).OnDoorOpened();
-
-            //_door.Opened += Raise.EventWith(this, EventArgs.Empty);
-
-           // _cookController.Received(1).Stop();
-            
-        }
+        //}
 
         [Test]
         public void PressStartButtonWhenCooking()
