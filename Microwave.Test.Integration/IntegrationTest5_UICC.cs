@@ -16,7 +16,7 @@ namespace Microwave.Test.Integration
     {
         #region Properties
 
-        private UserInterface _uut;
+        private IUserInterface _uut;
         //private IUserInterface _userInterface;
 
         private IButton _startCancelButton;

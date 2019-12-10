@@ -42,44 +42,44 @@ namespace Microwave.Test.Integration
             _uut.UI = _userInterface;
         }
 
-        [TestCase(1, 2000)]
-        public void OnTimerTickCookControllerLogsOutput(int times, int delay)
-        {
-            _door.Open();
-            _door.Close();
+        //[TestCase(1, 2000)]
+        //public void OnTimerTickCookControllerLogsOutput(int times, int delay)
+        //{
+        //    _door.Open();
+        //    _door.Close();
 
-            _powerButton.Press();
-            for (int i = times; (i > 0); i--)
-            {
-                _timeButton.Press();
-            }
+        //    _powerButton.Press();
+        //    for (int i = times; (i > 0); i--)
+        //    {
+        //        _timeButton.Press();
+        //    }
 
-            _startCancelButton.Press();
-
-
-            System.Threading.Thread.Sleep(delay);
-            _output.Received(1).OutputLine($"Display shows: {00:D2}:{_timer.TimeRemaining:D2}");
-        }
-
-        [TestCase(1, 1 * 62000)]
-        [TestCase(2, 2 * 122000)]
-        public void OntimerExpire(int times, int delay)
-        {
-            _door.Open();
-            _door.Close();
-
-            _powerButton.Press();
-            for (int i = times; (i > 0); i--)
-            {
-                _timeButton.Press();
-            }
-
-            _startCancelButton.Press();
+        //    _startCancelButton.Press();
 
 
-            System.Threading.Thread.Sleep(delay);
-            _output.Received(1).OutputLine("PowerTube turned off");
-        }
+        //    System.Threading.Thread.Sleep(delay);
+        //    _output.Received(1).OutputLine($"Display shows: {00:D2}:{_timer.TimeRemaining:D2}");
+        //}
+
+        //[TestCase(1, 1 * 62000)]
+        //[TestCase(2, 2 * 122000)]
+        //public void OntimerExpire(int times, int delay)
+        //{
+        //    _door.Open();
+        //    _door.Close();
+
+        //    _powerButton.Press();
+        //    for (int i = times; (i > 0); i--)
+        //    {
+        //        _timeButton.Press();
+        //    }
+
+        //    _startCancelButton.Press();
+
+
+        //    System.Threading.Thread.Sleep(delay);
+        //    _output.Received(1).OutputLine("PowerTube turned off");
+        //}
     }
 
 }
