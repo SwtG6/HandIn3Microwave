@@ -20,6 +20,9 @@ namespace Microwave.Test.Integration
         private IUserInterface _userInterface;
         private ICookController _uut;
 
+        //private IDoor _door;
+        //private IButton _powerButton, _timeButton, _startCancelButton;
+
         #region Setup
 
         [SetUp]
@@ -34,6 +37,9 @@ namespace Microwave.Test.Integration
             // ctor
             _display = new Display(_output);
 
+            //_door = new Door();
+
+
 
             //uut
             _uut = new CookController(_timer, _display, _powerTube, _userInterface);
@@ -43,6 +49,7 @@ namespace Microwave.Test.Integration
         #endregion
 
         #region tests
+
 
         [TestCase(100, 60, 1)]
         // test for om Timer "ticker" ned som tiden går generelt

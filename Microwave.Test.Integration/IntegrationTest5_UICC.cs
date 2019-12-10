@@ -16,7 +16,7 @@ namespace Microwave.Test.Integration
     {
         #region Properties
 
-        private IUserInterface _uut;
+        private UserInterface _uut;
         //private IUserInterface _userInterface;
 
         private IButton _startCancelButton;
@@ -27,7 +27,7 @@ namespace Microwave.Test.Integration
         private ILight _light;
         private IDisplay _display;
 
-        private ICookController _cookController;
+        private CookController _cookController;
         private IPowerTube _powerTube;
         private ITimer _timer;
         private IOutput _output;
@@ -58,8 +58,7 @@ namespace Microwave.Test.Integration
             (
                 _timer,
                 _display,
-                _powerTube,
-                _uut
+                _powerTube
             );
 
 
@@ -74,6 +73,7 @@ namespace Microwave.Test.Integration
                 _cookController
             );
 
+            _cookController.UI = _uut;
 
         }
 
@@ -81,19 +81,19 @@ namespace Microwave.Test.Integration
 
         #region Fulde Use case tests
 
-        //[Test] // Test 1: Tester om Power Tube bliver indstillet til det rigtige Power level ved ét tryk på powerknappen. UC 1-10.
-        //public void CorrectPowerOnCookStart_PowerTubeTest()
-        //{
-        //    _door.Open();
-        //    _door.Close();
+        [Test] // Test 1: Tester om Power Tube bliver indstillet til det rigtige Power level ved ét tryk på powerknappen. UC 1-10.
+        public void CorrectPowerOnCookStart_PowerTubeTest()
+        {
+            _door.Open();
+            _door.Close();
 
-        //    //_powerButton.Press();
-        //    _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
-        //    _timeButton.Press();
-        //    _startCancelButton.Press();
+            _powerButton.Press();
+            //_powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            _timeButton.Press();
+            _startCancelButton.Press();
 
-        //    _powerTube.Received(1).TurnOn(50);
-        //}
+            _powerTube.Received(1).TurnOn(50);
+        }
 
         //[TestCase(5, 250)]
         //// Test 2: Tester om Power Tube bliver indstillet til det rigtige Power level ved flere tryk på powerknappen. UC 1-10.
