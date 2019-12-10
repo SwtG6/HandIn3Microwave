@@ -24,6 +24,7 @@ namespace Microwave.Test.Integration
         private IDoor _door;
         private ILight _light;
         private IUserInterface _uut;
+        //private IPowerTube _powerTube;
 
         #region Setup
 
@@ -39,7 +40,7 @@ namespace Microwave.Test.Integration
             _startCancelButton = Substitute.For<IButton>();
             _timeButton = Substitute.For<IButton>();
 
-            _powerTube = Substitute.For<IPowerTube>();
+            //_powerTube = Substitute.For<IPowerTube>();
 
             //Ctors
             _door = new Door();
@@ -53,8 +54,9 @@ namespace Microwave.Test.Integration
                 _door,
                 _display,
                 _light,
-                _cookController,
-                _powerTube
+               
+             _cookController
+
             );
         }
 
@@ -90,7 +92,7 @@ namespace Microwave.Test.Integration
             _startCancelButton.Press();
             _door.Open();
 
-            _powerTube.Received(1).TurnOff();
+            //_powerTube.Received(1).TurnOff();
             //_door.Opened += Raise.EventWith(this, EventArgs.Empty);
 
             //_cookController.Received(1).Stop();
