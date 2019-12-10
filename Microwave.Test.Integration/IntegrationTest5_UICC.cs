@@ -87,7 +87,8 @@ namespace Microwave.Test.Integration
             _door.Open();
             _door.Close();
 
-            _powerButton.Press();
+            //_powerButton.Press();
+            _powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
             _timeButton.Press();
             _startCancelButton.Press();
 
