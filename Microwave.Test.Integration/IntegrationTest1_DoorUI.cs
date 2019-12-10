@@ -90,7 +90,8 @@ namespace Microwave.Test.Integration
             //_door.Opened += Raise.EventWith(this, EventArgs.Empty);
 
             //_cookController.Received(1).Stop();
-            
+
+             // stateshejhej += Raise.EventWith(this, EventArgs.Empty);
         }
 
         [Test]
